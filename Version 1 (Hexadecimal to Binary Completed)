@@ -1,0 +1,334 @@
+#include <iostream>
+#include <cctype>
+#include <map>
+
+using namespace std;
+
+int main() {
+
+
+
+    /*********************  INSERTING THE MAIN MENU AND EVERYTHING ELSE INSIDE OF A LOOP, ENDING WHEN THEY PRESS q OR IF THEY CHOOSE NOT TO CONTINUE AFTER A CONVERSION*/
+
+
+
+    cout << "Welcome to the Information Storage Converter!";
+
+    cout << endl;
+    cout << endl;
+
+    cout << "Press 1 for Hexadecimal to Binary conversion.";
+
+    cout << endl;
+    cout << endl;
+
+    cout << "Press 2 for Binary to Hexadecimal conversion.";
+
+    cout << endl;
+    cout << endl;
+
+    cout << "Press 3 for Hexadecimal to Decimal conversion.";
+
+    cout << endl;
+    cout << endl;
+
+
+    cout << "Press 4 for Decimal to Hexadecimal conversion.";
+
+    cout << endl;
+    cout << endl;
+    cout << endl;
+
+
+    cout << "If you would like to exit the program, press q.";
+
+    cout << endl;
+    cout << endl;
+
+    cout << endl;
+    cout << "Enter here: ";
+
+    
+
+    int userInput;
+
+    cin >> userInput;
+
+
+    /**** BEGINNING of Hexadecimal to Binary Conversion ****/
+
+
+    if (userInput == 1) {
+        cout << endl;
+        cout << "_______________";
+
+        cout << endl;
+        cout << endl;
+
+
+        cout << "You have selected Hexadecimal to Binary conversion.";
+
+        cout << endl;
+        cout << endl;
+
+        cout << "Enter a hexadecimal number: 0x";
+
+
+        string hexToBinaryInput;
+
+        cin >> hexToBinaryInput;
+
+        cout << endl;
+        
+
+
+       
+
+        /***** Hexadecimal Conversion *****/
+        
+
+
+        
+        // Using a map to input all Hex Digits to Binary digits
+        
+        map<char, string> hexToBinaryConversions {
+            {'0', "0000"},
+            {'1', "0001"},
+            {'2', "0010"},
+            {'3', "0011"},
+            {'4', "0100"},
+            {'5', "0101"},
+            {'6', "0110"},
+            {'7', "0111"},
+            {'8', "1000"},
+            {'9', "1001"},
+            {'a', "1010"},
+            {'b', "1011"},
+            {'c', "1100"},
+            {'d', "1101"},
+            {'e', "1110"},
+            {'f', "1111"},
+            {'A', "1010"},
+            {'B', "1011"},
+            {'C', "1100"},
+            {'D', "1101"},
+            {'E', "1110"},
+            {'F', "1111"}
+
+
+        };
+        
+
+
+        /****** ERROR CHECKING: Checking to see if the userInput is a valid hexadecimal number ******/
+
+        /*
+
+        for (auto currentCharacter : hexToBinaryInput) {
+
+            for (auto currentMapKey : hexToBinaryConversions) {
+
+
+				// if the current character matches one of the map keys, then it is a valid hex digit, go on to the next character
+
+
+                if (hexToBinaryInput[currentCharacter] == currentMapKey.first) { 
+
+                    continue;
+
+                }
+
+                // if it doesn't match any one of the map keys, then it is not a valid hex digit, so print an error message and terminate the program
+
+                else {
+
+                cout << "ERROR: Invalid hexadecimal digit encountered.  Please only enter valid hexadecimal digits (0-9, A-F).
+
+
+                }
+
+            }
+        }
+
+        */
+
+
+
+
+        cout << "Here is your Hexadecimal number converted to Binary: ";
+        
+
+        
+        // Converting each of hexToBinaryInput's characters and printing out the results one by one
+
+        for (auto currentCharacter : hexToBinaryInput) {
+
+            cout << hexToBinaryConversions[currentCharacter] << " ";
+
+        }
+
+
+    }
+
+
+
+    /**** END of Hexadecimal to Binary Conversion ****/
+
+
+
+
+
+
+
+
+
+    /**** BEGINNING of Binary to Hexadecimal ****/
+
+    if (userInput == 2) {
+
+     
+     
+
+
+        /****** ERROR CHECKING: Padding with leading zeros if the length of the binary number is not a multiple of 4 ******/
+
+
+        /*
+        
+        if (binary number user input % 4 != 0) {
+        
+			while (binary number from user % 4 != 0) {
+
+			keep adding zeroes to the beginning of their input until it is a multiple of 4
+
+			}
+
+        }
+        */
+
+
+
+
+        // Map of Binary to Hexadecimal conversions (copying the previous map but now the values are the keys and vice versa
+
+
+        
+        // Doing the same as before, accesing the map and printing our their result with an 0x in the front
+
+
+
+
+
+        
+        
+
+    }
+
+    /**** END of Binary to Hexadecimal ****/
+
+
+
+
+    /**** BEGINNING of Hexadecimal to Decimal ****/
+
+
+
+
+    
+    /*
+    
+    - Getting size of the Hexadecimal number they entered and inserting that into a variable
+
+
+    - Creating a result variable that we will continually be adding to and printing as the user's result???
+
+
+
+
+
+
+    - Accessing each character's value into the map (Hex to decimal), multiplying by 16 to the power of the size of the number they entered (using pow function in cmath), and adding one by one
+
+        - The size of the number the user entered will continually be subtracted until it is eventually 0 (size - 1), we are stopping this loop when the size is 0
+
+                7AF size is 3 characters, 7 will be multiplied by 16 to the power of 2, A multiplied by 16 to the power of 1, F multiplied by 16 to the power of 0 (which will be one)
+
+                Once this power is 0, we stop the loop and print the result
+    
+    */
+
+
+
+
+
+
+
+    /**** END of Hexadecimal to Decimal ****/
+
+
+
+
+
+
+
+
+    /**** BEGINNING of Decimal to Hexadecimal****/
+
+
+
+    /*
+    
+    
+
+    - Creating two variables, one for the division result and one for the modulo result
+
+    - Creating a stack to contain the Hexadecimal digits
+
+
+
+
+
+
+    - In a loop, dividing user's number by 16, inserting into result variable, and doing a modulo by 16 and inserting into modulo result variable
+
+
+        - continuing to divide result variable until the result is 0
+
+        - converting the modulo result into hexadecimal first, then inserting into the stack one-by-one
+
+
+
+    - Stopping the loop when the division result is 0
+
+
+   
+
+    When we have exited the while loop, (when the division result reached 0,)
+
+    - Popping off the final result off of the stack when finished with the loop and printing out their result with a 0x in the front, doing this in a loop until the contents of the stack are empty
+    
+    */
+
+
+
+
+
+
+
+
+
+    /**** END of Decimal to Hexadecimal ****/
+    
+
+
+
+
+
+    
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+        cout << endl;
+}
